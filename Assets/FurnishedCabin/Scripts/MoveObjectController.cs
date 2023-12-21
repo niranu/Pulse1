@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MoveObjectController : MonoBehaviour 
 {
-	public float reachRange = 1.8f;			
+	public float reachRange = 3.5f;			
 
 	private Animator anim;
 	private Camera fpsCam;
@@ -52,6 +52,8 @@ public class MoveObjectController : MonoBehaviour
 		}
 	}
 
+
+
 	void OnTriggerExit(Collider other)
 	{		
 		if (other.gameObject == player)		//player has exited trigger
@@ -64,44 +66,53 @@ public class MoveObjectController : MonoBehaviour
 
 
 
-	void Update()
-	{		
-		if (playerEntered)
-		{	
-
-			//center point of viewport in World space.
-			Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f,0.5f,0f));
+	void Update(){		
+		if (playerEntered){
+			Debug.Log("Player entered the collider");
+            //center point of viewport in World space.
+            //cast a ray from the center of the camera's viewport into the game world and check if it hits anything.
+            Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f,0.5f,0f));
 			RaycastHit hit;
 
-			//if raycast hits a collider on the rayLayerMask
-			if (Physics.Raycast(rayOrigin,fpsCam.transform.forward, out hit,reachRange,rayLayerMask))
-			{
+            //if raycast hits a collider on the rayLayerMask
+            //This line performs a raycast from the rayOrigin in the direction of the camera's forward vector
+			//(fpsCam.transform.forward). The out hit parameter is used to get information about what the
+			//ray hit, and reachRange specifies the maximum distance the ray can travel.
+            if (Physics.Raycast(rayOrigin,fpsCam.transform.forward, out hit
+				//,reachRange
+				,rayLayerMask)){
 				MoveableObject moveableObject = null;
-				//is the object of the collider player is looking at the same as me?
-				if (!isEqualToParent(hit.collider, out moveableObject))
-				{	//it's not so return;
-					return;
-				}
-					
-				if (moveableObject != null)		//hit object must have MoveableDraw script attached
+				Transform t = hit
+					.collider
+					.transform;
+				while(transform != t && t != null){
+					t = t.parent;
+                }
+                Debug.Log("parent found");
+                if (t != null) {
+                    moveableObject = t.GetComponent<MoveableObject>();
+                    
+					Debug.Log("Raycast collided to " + t.gameObject.name );
+                    showInteractMsg = true;
+                    string animBoolNameNum = animBoolName + moveableObject.objectNumber.ToString();
+
+                    bool isOpen = anim.GetBool(animBoolNameNum);    //need current state for message.
+                    msg = getGuiMsg(isOpen);
+
+                    if (Input.GetKeyUp(KeyCode.E) || Input.GetButtonDown("Fire1")){
+                        anim.enabled = true;
+                        anim.SetBool(animBoolNameNum, !isOpen);
+                        msg = getGuiMsg(!isOpen);
+                    }
+
+                }
+				else
 				{
-					showInteractMsg = true;
-					string animBoolNameNum = animBoolName + moveableObject.objectNumber.ToString();
-
-					bool isOpen = anim.GetBool(animBoolNameNum);	//need current state for message.
-					msg = getGuiMsg(isOpen);
-
-					if (Input.GetKeyUp(KeyCode.E) || Input.GetButtonDown("Fire1"))
-					{
-						anim.enabled = true;
-						anim.SetBool(animBoolNameNum,!isOpen);
-						msg = getGuiMsg(!isOpen);
-					}
-
+					showInteractMsg=false; ////////////////////////////////////////
 				}
-			}
-			else
-			{
+            }
+			else{
+				Debug.Log("Player entered but ray cast not working.");
 				showInteractMsg = false;
 			}
 		}
