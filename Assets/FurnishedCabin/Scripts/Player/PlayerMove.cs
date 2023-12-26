@@ -12,6 +12,21 @@ public class PlayerMove : MonoBehaviour
 
     private CharacterController charController;
 
+    /*public PickableItem[] inventory = new PickableItem[7];
+    public void addInventory(PickableItem item)
+    {
+        for (int i = 0; i < inventory.Length; i++)
+        {
+            if (inventory[i] == null)
+            {
+                inventory[i] = item;
+                Debug.Log("Item added to inventory at slot " + i);
+                return; 
+            }
+        }
+
+        Debug.Log("Inventory is full. Cannot add more items.");
+    } */
 
     private void Awake()
     {
