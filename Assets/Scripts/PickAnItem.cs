@@ -38,7 +38,7 @@ public class PickAnItem : MonoBehaviour
                         //addInventory(gameObject);
                         // add inventory method
                     }
-                    else
+                    else if (IsFlashLight(gameObject) != true)
                     {
                        PickUpItem(gameObject);
                        print("Item is picked");
