@@ -5,10 +5,9 @@ using UnityEngine;
 public class PickableItem : MonoBehaviour
 {
     
-    public GameObject[] inventory = new GameObject[7];
+    //public GameObject[] inventory = new GameObject[7];
     
-    public void addInventory(GameObject item)
-    {
+   /* public void addInventory(GameObject item) {
         for (int i = 0; i < inventory.Length; i++)
         {
             if (inventory[i] == null)
@@ -20,7 +19,7 @@ public class PickableItem : MonoBehaviour
         }
 
         Debug.Log("Inventory is full. Cannot add more items.");
-    } 
+    } */
 
 
     // Start is called before the first frame update
