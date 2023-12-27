@@ -6,65 +6,50 @@ using UnityEngine;
 
 public class PickAnItem : MonoBehaviour
 {
-    public GameObject flashLightOnPlayer; // add the real flashlight as the child of the player
+    private GameObject flashLightOnPlayer; // add the real flashlight as the child of the player
 
     // Start is called before the first frame update
     void Start()
     {
-        flashLightOnPlayer.SetActive(false);
-    }
-
-    public bool IsFlashLight(GameObject gameObject)
-    {
-        bool isFlashLight = gameObject.tag == "Flashlight";
-        return isFlashLight;
-    }
-
-    private void OnTriggerStay(Collider other) //pickable Item's collider
-    {
-        if (other.gameObject.tag == "Player")
-            //is the *other* gambeObject's tag Player
-        {
-            PickableItem p = gameObject.GetComponent<PickableItem>(); 
-            if (p != null)
-            {
-                
-                if (Input.GetKey(KeyCode.E))
-                {
-                    if (IsFlashLight(gameObject))
-                    {
-                        PickUpItem(gameObject); 
-                        flashLightOnPlayer.SetActive(true);
-                        //addInventory(gameObject);
-                        // add inventory method
-                    }
-                    else if (IsFlashLight(gameObject) != true)
-                    {
-                       PickUpItem(gameObject);
-                       print("Item is picked");
-                       // add inventory method 
-                    }
-                }
-            }
-           /* else
-            {
-                OnTriggerExit();
-            } */
-        }
-    }
-
-    void PickUpItem(GameObject g)
-    {
-        g.gameObject.SetActive(false);
-        Debug.Log("Item is picked up");
-        return;
-    }
-
-    
-
-    // Update is called once per frame
-    void Update()
-    {
+        flashLightOnPlayer = GameObject.Find("Flashlight");
         
     }
+    
+    private void OnTriggerStay(Collider other)
+    {
+        PickableItem p = other.gameObject.GetComponent<PickableItem>();
+        
+        if (other.gameObject.tag == "Pickable Item")
+        {
+            if (Input.GetKey(KeyCode.E)) 
+            {
+                Debug.Log("PickableItem is picked");
+                p.addInventory(other.gameObject);
+                other.gameObject.SetActive(false);
+                //addInventory(gameObject);
+                // add inventory method
+                
+            }
+        }
+        else if (other.gameObject.tag == "Flashlight")
+            {
+                if (Input.GetKey(KeyCode.E))
+                {
+                    other.gameObject.SetActive(false);
+                    gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                    p.addInventory(other.gameObject);
+                    Debug.Log("Flashlight is picked");
+                    //addInventory(gameObject);
+                    // add inventory method
+                        
+                } 
+            }
+        
+    }
+
+    // Update is called once per frame
+     void Update()
+     {
+     
+     }
 }
