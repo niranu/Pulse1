@@ -11,9 +11,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float movementSpeed = 2f;
 
     private CharacterController charController;
-
     
-
+    
     private void Awake()
     {
         charController = GetComponent<CharacterController>();
