@@ -164,15 +164,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2271036430416539210, guid: d512ebcdf02532446b58dc05fc0f10d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 668.2
+      value: 536.7
       objectReference: {fileID: 0}
     - target: {fileID: 2271036430416539210, guid: d512ebcdf02532446b58dc05fc0f10d2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 39.3
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 2271036430416539210, guid: d512ebcdf02532446b58dc05fc0f10d2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1276
+      value: 1234.4
       objectReference: {fileID: 0}
     - target: {fileID: 2271036430416539210, guid: d512ebcdf02532446b58dc05fc0f10d2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1093,8 +1093,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 65000014281147728, guid: ba124179af6a3a7469f127358241673d, type: 3}
+      propertyPath: m_Size.z
+      value: 3.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 65000014281147728, guid: ba124179af6a3a7469f127358241673d, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65000014281147728, guid: ba124179af6a3a7469f127358241673d, type: 3}
+      propertyPath: m_Center.z
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 108000011723270914, guid: ba124179af6a3a7469f127358241673d, type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -1239,6 +1247,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f6ef443252cefb47b547930837634aa, type: 3}
+--- !u!1 &554435681 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000010972506066, guid: ba124179af6a3a7469f127358241673d, type: 3}
+  m_PrefabInstance: {fileID: 492980765}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &554435687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554435681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 275b4494af65c5545bf2d8bc2f75c46d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reachRange: 3.5
+  enteredHouse: 0
+  openTheDoor: 1
 --- !u!1 &601418601
 GameObject:
   m_ObjectHideFlags: 0
@@ -1510,7 +1538,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 735778298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 569.3, y: 22.3, z: 1146.5}
+  m_LocalPosition: {x: 777, y: 22.3, z: 1146.5}
   m_LocalScale: {x: 40.065685, y: 40.065685, z: 40.065685}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3166,7 +3194,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038289025}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 539.7, y: 32.2, z: 1265.2}
+  m_LocalPosition: {x: 539.7, y: 32.2, z: 1301.9}
   m_LocalScale: {x: 15.372578, y: 15.372578, z: 15.372578}
   m_ConstrainProportionsScale: 0
   m_Children: []

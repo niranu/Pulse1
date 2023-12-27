@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MoveObjectController : MonoBehaviour 
-{
+public class MoveObjectController : MonoBehaviour {
 	public float reachRange = 3.5f;			
 
 	private Animator anim;
@@ -16,11 +15,17 @@ public class MoveObjectController : MonoBehaviour
 	private GUIStyle guiStyle;
 	private string msg;
 
-	private int rayLayerMask; 
+	private int rayLayerMask;
+
+	ClosePlayerEntered closePlayerEntered;
+
+	bool canOpenTheDoor = true;
 
 
-	void Start()
-	{
+
+
+
+    void Start(){
 		//Initialize moveDrawController if script is enabled.
 		player = GameObject.FindGameObjectWithTag("Player");
 
@@ -40,6 +45,8 @@ public class MoveObjectController : MonoBehaviour
 
 		//setup GUI style settings for user prompts
 		setupGui();
+
+		
 
 	}
 		
@@ -82,9 +89,7 @@ public class MoveObjectController : MonoBehaviour
 				//,reachRange
 				,rayLayerMask)){
 				MoveableObject moveableObject = null;
-				Transform t = hit
-					.collider
-					.transform;
+				Transform t = hit.collider.transform;
 				while(transform != t && t != null){
 					t = t.parent;
                 }
@@ -120,8 +125,7 @@ public class MoveObjectController : MonoBehaviour
 	}
 
 	//is current gameObject equal to the gameObject of other.  check its parents
-	private bool isEqualToParent(Collider other, out MoveableObject draw)
-	{
+	private bool isEqualToParent(Collider other, out MoveableObject draw){
 		draw = null;
 		bool rtnVal = false;
 		try
