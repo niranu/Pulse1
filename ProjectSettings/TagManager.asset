@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Flashlight
   - Pickable Item
+  - Key
   layers:
   - Default
   - TransparentFX

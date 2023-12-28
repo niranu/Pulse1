@@ -17,7 +17,7 @@ public class MoveObjectController : MonoBehaviour {
 
 	private int rayLayerMask;
 
-	//ClosePlayerEntered closePlayerEntered;
+	ClosePlayerEntered closePlayerEntered;
 
 	bool canOpenTheDoor = true;
 

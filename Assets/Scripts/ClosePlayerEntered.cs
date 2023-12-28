@@ -114,7 +114,7 @@ public class ClosePlayerEntered : MonoBehaviour{
         msg = "Press E/Fire1 to Open";
     }*/
 
-    private string getGuiMsg(bool isOpen)
+    /*private string getGuiMsg(bool isOpen)
     {
         string rtnVal;
         if (isOpen)
@@ -127,15 +127,16 @@ public class ClosePlayerEntered : MonoBehaviour{
         }
 
         return rtnVal;
-    }
+    }*/
 
-    void OnGUI(){
+   /* void OnGUI(){
         if (showInteractMsg)  //show on-screen prompts to user for guide.
         {
             GUI.Label(new Rect(50, Screen.height - 50, 200, 50), msg, guiStyle);
         }
     }
     //End of GUI Config --------------
+   */
 
 }
 

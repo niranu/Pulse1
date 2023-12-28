@@ -40,6 +40,20 @@ public class PickAnItem : MonoBehaviour{
                         
             } 
          }
+        else if (other.gameObject.tag == "Key"){
+            if (Input.GetKey(KeyCode.E)) {
+                p = other.GetComponent<PickableItem>();
+                if (Input.GetKey(KeyCode.E)){
+                    Debug.Log("Key is picked");
+                    addInventory(other.gameObject);
+                    other.gameObject.SetActive(false);
+
+                    // add inventory method
+
+                }
+
+            }
+        }
         
     }
    
@@ -68,5 +82,13 @@ public class PickAnItem : MonoBehaviour{
             Debug.Log(inventory[i]);
         }
 
+    }
+    public GameObject[] GetInventory(){
+        if (inventory == null)
+        {
+            Debug.LogError("Inventory is null in PickAnItem script.");
+            inventory = new GameObject[7]; // Initialize the array if it's null
+        }
+        return inventory;
     }
 }
