@@ -10,10 +10,32 @@ public class PickAnItem : MonoBehaviour{
     PickableItem p;
     public GameObject[] inventory = new GameObject[7];
 
+
+    MoveObjectController moveObjectController;
+    ClosePlayerEntered closePlayerEntered;
+    public int totalKey = 2;
+    public int keyCount = 0;
+
     // Start is called before the first frame update
     void Start() {
         flashLightOnPlayer = GameObject.Find("Flashlight");
-        
+
+
+
+        moveObjectController = GameObject.Find("PFB_DoorDouble").GetComponent<MoveObjectController>();
+
+        if (moveObjectController == null)
+        {
+            Debug.LogError("MoveObjectController not found on the PFB_DoorDouble GameObject.");
+        }
+        closePlayerEntered = GameObject.Find("PFB_DoorDouble").GetComponent<ClosePlayerEntered>();
+        if (closePlayerEntered == null)
+        {
+            Debug.LogError("ClosePlayerEntered not found on the PFB_DoorDouble GameObject.");
+        }
+
+
+
     }
     
     private void OnTriggerStay(Collider other) { 
@@ -47,12 +69,43 @@ public class PickAnItem : MonoBehaviour{
                     Debug.Log("Key is picked");
                     addInventory(other.gameObject);
                     other.gameObject.SetActive(false);
+                    keyCount++;
+                    
+                    
+                    /*foreach (GameObject item in inventory)
+                    {
+                        if (item.CompareTag("Key"))
+                        {
+                            keyCount++;
+                        }
+                        if (keyCount == totalKey)
+                        {
+                            moveObjectController.enabled = true;
+                        }
+
+                    }
+                    keyCount = 0;*/
+
+                    if(keyCount == totalKey)
+                    {
+                        moveObjectController.enabled = true;
+                        Debug.Log("Main door enabled.");
+                        closePlayerEntered.enabled = false;
+                        Debug.Log("ClosePlayerEntered disabled");
+                    }
 
                     // add inventory method
 
                 }
 
+                
+
             }
+            //check if the key count = key num, if so activate the main door
+            
+            
+
+
         }
         
     }

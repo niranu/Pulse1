@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AnkleGrabberExample : MonoBehaviour {
+public class AnkleGrabberExample : MonoBehaviour
+{
 	private Animator anim;
 	int IdleOne;
 	int IdleAlert;
@@ -13,11 +14,14 @@ public class AnkleGrabberExample : MonoBehaviour {
 	int Dies;
 	int HushLittleBaby;
 	int Run;
+    private GameObject player;
+	bool bite = false;
 
 
-	// Use this for initialization
-	void Start () {
-		anim = GetComponent<Animator> ();
+    // Use this for initialization
+    void Start()
+	{
+		anim = GetComponent<Animator>();
 		IdleOne = Animator.StringToHash("IdleOne");
 		IdleAlert = Animator.StringToHash("IdleAlert");
 		Sleeps = Animator.StringToHash("Sleeps");
@@ -30,246 +34,344 @@ public class AnkleGrabberExample : MonoBehaviour {
 		Hit = Animator.StringToHash("Hit");
 		Run = Animator.StringToHash("Run");
 
-	
+
 	}
 
-	// Update is called once per frame
-	void Update () {
-		     if    (Input.GetKeyDown(KeyCode.Y)) {
-			if(anim.GetCurrentAnimatorStateInfo(0).IsName("IdleOne")) {  
-				anim.SetBool (IdleAlert, true); 
-				anim.SetBool (IdleOne, false);                                      
-				anim.SetBool (Sleeps, false);
-				anim.SetBool (AngryReaction, false);
-				anim.SetBool (Hit, false);  
-				anim.SetBool (AnkleBite, false);  
-				anim.SetBool (CrochBite, false); 
-				anim.SetBool (Dies, false);
-				anim.SetBool (HushLittleBaby, false);
-				anim.SetBool (Run, false);  
-			}
-		} else if (Input.GetKeyUp(KeyCode.Y)) {
-			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("IdleAlert")) {            //y to alert
-				anim.SetBool (IdleAlert, false); 
-				anim.SetBool (IdleOne, true);                                      
-				anim.SetBool (Sleeps, false);
-				anim.SetBool (AngryReaction, false);
-				anim.SetBool (Hit, false);  
-				anim.SetBool (AnkleBite, false);  
-				anim.SetBool (CrochBite, false); 
-				anim.SetBool (Dies, false);
-				anim.SetBool (HushLittleBaby, false);
-				anim.SetBool (Run, false);  
-			}
-		} else if (Input.GetKeyDown(KeyCode.T)) {
-			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("IdleOne")) {
-				anim.SetBool (IdleAlert, false); 
-				anim.SetBool (IdleOne, false);                                      
-				anim.SetBool (Sleeps, true);
-				anim.SetBool (AngryReaction, false);
-				anim.SetBool (Hit, false);  
-				anim.SetBool (AnkleBite, false);  
-				anim.SetBool (CrochBite, false); 
-				anim.SetBool (Dies, false);
-				anim.SetBool (HushLittleBaby, false);
-				anim.SetBool (Run, false);  
-			}
-		} else if (Input.GetKeyUp(KeyCode.T)) {
-			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("Sleeps")) {          //T to Sleeps
-				anim.SetBool (IdleAlert, false); 
-				anim.SetBool (IdleOne, true);                                      
-				anim.SetBool (Sleeps, false);
-				anim.SetBool (AngryReaction, false);
-				anim.SetBool (Hit, false);  
-				anim.SetBool (AnkleBite, false);  
-				anim.SetBool (CrochBite, false); 
-				anim.SetBool (Dies, false);
-				anim.SetBool (HushLittleBaby, false);
-				anim.SetBool (Run, false);  
-		    }
-		} else if (Input.GetKeyDown(KeyCode.E)) {
-			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("IdleOne")) {
-				anim.SetBool (IdleAlert, false); 
-				anim.SetBool (IdleOne, false);                                      
-				anim.SetBool (Sleeps, false);
-				anim.SetBool (AngryReaction, true);
-				anim.SetBool (Hit, false);  
-				anim.SetBool (AnkleBite, false);  
-				anim.SetBool (CrochBite, false); 
-				anim.SetBool (Dies, false);;
-				anim.SetBool (HushLittleBaby, false);
-				anim.SetBool (Run, false);  
-			}
-		} else if (Input.GetKeyUp(KeyCode.E)) {
-			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("AngryReaction")) {            //E to angry react
-				anim.SetBool (IdleAlert, false); 
-				anim.SetBool (IdleOne, true);                                      
-				anim.SetBool (Sleeps, false);
-				anim.SetBool (AngryReaction, false);
-				anim.SetBool (Hit, false);  
-				anim.SetBool (AnkleBite, false);  
-				anim.SetBool (CrochBite, false); 
-				anim.SetBool (Dies, false);
-				anim.SetBool (HushLittleBaby, false);
-				anim.SetBool (Run, false);  
-			}
-		} else if (Input.GetKeyDown(KeyCode.U)) {
-			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("IdleOne")) {
-				anim.SetBool (IdleAlert, false); 
-				anim.SetBool (IdleOne, false);                                      
-				anim.SetBool (Sleeps, false);
-				anim.SetBool (AngryReaction, false);
-				anim.SetBool (Hit, true);  
-				anim.SetBool (AnkleBite, false);  
-				anim.SetBool (CrochBite, false); 
-				anim.SetBool (Dies, false);
-				anim.SetBool (HushLittleBaby, false);
-				anim.SetBool (Run, false);  
-			}
-		} else if (Input.GetKeyUp(KeyCode.U)) {
-			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("Hit")) {                //u to hit
-				anim.SetBool (IdleAlert, false); 
-				anim.SetBool (IdleOne, true);                                      
-				anim.SetBool (Sleeps, false);
-				anim.SetBool (AngryReaction, false);
-				anim.SetBool (Hit, false);  
-				anim.SetBool (AnkleBite, false);  
-				anim.SetBool (CrochBite, false); 
-				anim.SetBool (Dies, false);
-				anim.SetBool (HushLittleBaby, false);
-				anim.SetBool (Run, false);  
-			}
-		} else if (Input.GetKeyDown(KeyCode.Q)) {
-			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("IdleOne")) {
-				anim.SetBool (IdleAlert, false); 
-				anim.SetBool (IdleOne, false);                                      
-				anim.SetBool (Sleeps, false);
-				anim.SetBool (AngryReaction, false);
-				anim.SetBool (Hit, false);  
-				anim.SetBool (AnkleBite, true);  
-				anim.SetBool (CrochBite, false); 
-				anim.SetBool (Dies, false);
-				anim.SetBool (HushLittleBaby, false);
-				anim.SetBool (Run, false);  
-			}
-		} else if (Input.GetKeyUp(KeyCode.Q)) {
-			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("AnkleBite")) {              //Q to ankle bite
-				anim.SetBool (IdleAlert, false); 
-				anim.SetBool (IdleOne, true);                                      
-				anim.SetBool (Sleeps, false);
-				anim.SetBool (AngryReaction, false);
-				anim.SetBool (Hit, false);  
-				anim.SetBool (AnkleBite, false);  
-				anim.SetBool (CrochBite, false); 
-				anim.SetBool (Dies, false);
-				anim.SetBool (HushLittleBaby, false);
-				anim.SetBool (Run, false);  
-			}
-		} else if (Input.GetKeyDown(KeyCode.W)) {
-			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("IdleOne")) {
-				anim.SetBool (IdleAlert, false); 
-				anim.SetBool (IdleOne, false);                                      
-				anim.SetBool (Sleeps, false);
-				anim.SetBool (AngryReaction, false);
-				anim.SetBool (Hit, false);  
-				anim.SetBool (AnkleBite, false);  
-				anim.SetBool (CrochBite, true); 
-				anim.SetBool (Dies, false);
-				anim.SetBool (HushLittleBaby, false);
-				anim.SetBool (Run, false);  
-			}
-		} else if (Input.GetKeyUp(KeyCode.W)) {
-			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("CrochBite")) {          //W to croch bite
-				anim.SetBool (IdleAlert, false); 
-				anim.SetBool (IdleOne, true);                                      
-				anim.SetBool (Sleeps, false);
-				anim.SetBool (AngryReaction, false);
-				anim.SetBool (Hit, false);  
-				anim.SetBool (AnkleBite, false);  
-				anim.SetBool (CrochBite, false); 
-				anim.SetBool (Dies, false);
-				anim.SetBool (HushLittleBaby, false);
-				anim.SetBool (Run, false);  
-			}
-		} else if (Input.GetKeyDown(KeyCode.O)) {
-			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("IdleOne")) {                        
-				anim.SetBool (IdleAlert, false); 
-				anim.SetBool (IdleOne, false);                                      
-				anim.SetBool (Sleeps, false);
-				anim.SetBool (AngryReaction, false);
-				anim.SetBool (Hit, false);  
-				anim.SetBool (AnkleBite, false);  
-				anim.SetBool (CrochBite, false); 
-				anim.SetBool (Dies, true);
-				anim.SetBool (HushLittleBaby, false);
-				anim.SetBool (Run, false);  
-			}
-		} else if (Input.GetKeyUp(KeyCode.O)) {
-			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("Dies")) {                        //O to simple die
-				anim.SetBool (IdleAlert, false); 
-				anim.SetBool (IdleOne, true);                                      
-				anim.SetBool (Sleeps, false);
-				anim.SetBool (AngryReaction, false);
-				anim.SetBool (Hit, false);  
-				anim.SetBool (AnkleBite, false);  
-				anim.SetBool (CrochBite, false); 
-				anim.SetBool (Dies, false);
-				anim.SetBool (HushLittleBaby, false);
-				anim.SetBool (Run, false);  
-		}
-		} else if (Input.GetKeyDown(KeyCode.I)) {
-			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("IdleOne")) {                        
-				anim.SetBool (IdleAlert, false); 
-				anim.SetBool (IdleOne, false);                                      
-				anim.SetBool (Sleeps, false);
-				anim.SetBool (AngryReaction, false);
-				anim.SetBool (Hit, false);  
-				anim.SetBool (AnkleBite, false);  
-				anim.SetBool (CrochBite, false); 
-				anim.SetBool (Dies, false);
-				anim.SetBool (HushLittleBaby, true);
-				anim.SetBool (Run, false);  
-			}
-		} else if (Input.GetKeyUp(KeyCode.I)) {
-			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("HushLittleBaby")) {                        //I to hush
-				anim.SetBool (IdleAlert, false); 
-				anim.SetBool (IdleOne, true);                                      
-				anim.SetBool (Sleeps, false);
-				anim.SetBool (AngryReaction, false);
-				anim.SetBool (Hit, false);  
-				anim.SetBool (AnkleBite, false);  
-				anim.SetBool (CrochBite, false); 
-				anim.SetBool (Dies, false);
-				anim.SetBool (HushLittleBaby, false);
-				anim.SetBool (Run, false); 
-			}
-		} else if (Input.GetKeyDown(KeyCode.R)) {
-			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("IdleOne")) {                        
-				anim.SetBool (IdleAlert, false); 
-				anim.SetBool (IdleOne, false);                                      
-				anim.SetBool (Sleeps, false);
-				anim.SetBool (AngryReaction, false);
-				anim.SetBool (Hit, false);  
-				anim.SetBool (AnkleBite, false);  
-				anim.SetBool (CrochBite, false); 
-				anim.SetBool (Dies, false);
-				anim.SetBool (HushLittleBaby, false);
-				anim.SetBool (Run, true); 
-			}
-		} else if (Input.GetKeyUp(KeyCode.R)) {
-			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("Run")) {                        //R to Run
-				anim.SetBool (IdleAlert, false); 
-				anim.SetBool (IdleOne, true);                                      
-				anim.SetBool (Sleeps, false);
-				anim.SetBool (AngryReaction, false);
-				anim.SetBool (Hit, false);  
-				anim.SetBool (AnkleBite, false);  
-				anim.SetBool (CrochBite, false); 
-				anim.SetBool (Dies, false);
-				anim.SetBool (HushLittleBaby, false);
-				anim.SetBool (Run, false);  
-			}
+    void OnTriggerEnter(Collider other){
+        if (other.gameObject == player)     //player has collided with trigger
+        {
+			bite = true;
+           
+        }
+    }
 
-	     } 
+    // Update is called once per frame
+    void Update()
+	{
+		if (bite){
+                         //Q to ankle bite
+                anim.SetBool(IdleAlert, false);
+                anim.SetBool(IdleOne, true);
+                anim.SetBool(Sleeps, false);
+                anim.SetBool(AngryReaction, false);
+                anim.SetBool(Hit, false);
+                anim.SetBool(AnkleBite, false);
+                anim.SetBool(CrochBite, false);
+                anim.SetBool(Dies, false);
+                anim.SetBool(HushLittleBaby, false);
+                anim.SetBool(Run, false);
+                               //O to simple die
+                anim.SetBool(IdleAlert, false);
+                anim.SetBool(IdleOne, true);
+                anim.SetBool(Sleeps, false);
+                anim.SetBool(AngryReaction, false);
+                anim.SetBool(Hit, false);
+                anim.SetBool(AnkleBite, false);
+                anim.SetBool(CrochBite, false);
+                anim.SetBool(Dies, false);
+                anim.SetBool(HushLittleBaby, false);
+                anim.SetBool(Run, false);
+            
+
+        }
+
+       
+
+        /*if (Input.GetKeyDown(KeyCode.Y))
+		{
+			if (anim.GetCurrentAnimatorStateInfo(0).IsName("IdleOne"))
+			{
+				anim.SetBool(IdleAlert, true);
+				anim.SetBool(IdleOne, false);
+				anim.SetBool(Sleeps, false);
+				anim.SetBool(AngryReaction, false);
+				anim.SetBool(Hit, false);
+				anim.SetBool(AnkleBite, false);
+				anim.SetBool(CrochBite, false);
+				anim.SetBool(Dies, false);
+				anim.SetBool(HushLittleBaby, false);
+				anim.SetBool(Run, false);
+			}
+		}
+		else if (Input.GetKeyUp(KeyCode.Y))
+		{
+			if (anim.GetCurrentAnimatorStateInfo(0).IsName("IdleAlert"))
+			{            //y to alert
+				anim.SetBool(IdleAlert, false);
+				anim.SetBool(IdleOne, true);
+				anim.SetBool(Sleeps, false);
+				anim.SetBool(AngryReaction, false);
+				anim.SetBool(Hit, false);
+				anim.SetBool(AnkleBite, false);
+				anim.SetBool(CrochBite, false);
+				anim.SetBool(Dies, false);
+				anim.SetBool(HushLittleBaby, false);
+				anim.SetBool(Run, false);
+			}
+		}
+		else if (Input.GetKeyDown(KeyCode.T))
+		{
+			if (anim.GetCurrentAnimatorStateInfo(0).IsName("IdleOne"))
+			{
+				anim.SetBool(IdleAlert, false);
+				anim.SetBool(IdleOne, false);
+				anim.SetBool(Sleeps, true);
+				anim.SetBool(AngryReaction, false);
+				anim.SetBool(Hit, false);
+				anim.SetBool(AnkleBite, false);
+				anim.SetBool(CrochBite, false);
+				anim.SetBool(Dies, false);
+				anim.SetBool(HushLittleBaby, false);
+				anim.SetBool(Run, false);
+			}
+		}
+		else if (Input.GetKeyUp(KeyCode.T))
+		{
+			if (anim.GetCurrentAnimatorStateInfo(0).IsName("Sleeps"))
+			{          //T to Sleeps
+				anim.SetBool(IdleAlert, false);
+				anim.SetBool(IdleOne, true);
+				anim.SetBool(Sleeps, false);
+				anim.SetBool(AngryReaction, false);
+				anim.SetBool(Hit, false);
+				anim.SetBool(AnkleBite, false);
+				anim.SetBool(CrochBite, false);
+				anim.SetBool(Dies, false);
+				anim.SetBool(HushLittleBaby, false);
+				anim.SetBool(Run, false);
+			}
+		}
+		else if (Input.GetKeyDown(KeyCode.E))
+		{
+			if (anim.GetCurrentAnimatorStateInfo(0).IsName("IdleOne"))
+			{
+				anim.SetBool(IdleAlert, false);
+				anim.SetBool(IdleOne, false);
+				anim.SetBool(Sleeps, false);
+				anim.SetBool(AngryReaction, true);
+				anim.SetBool(Hit, false);
+				anim.SetBool(AnkleBite, false);
+				anim.SetBool(CrochBite, false);
+				anim.SetBool(Dies, false); ;
+				anim.SetBool(HushLittleBaby, false);
+				anim.SetBool(Run, false);
+			}
+		}
+		else if (Input.GetKeyUp(KeyCode.E))
+		{
+			if (anim.GetCurrentAnimatorStateInfo(0).IsName("AngryReaction"))
+			{            //E to angry react
+				anim.SetBool(IdleAlert, false);
+				anim.SetBool(IdleOne, true);
+				anim.SetBool(Sleeps, false);
+				anim.SetBool(AngryReaction, false);
+				anim.SetBool(Hit, false);
+				anim.SetBool(AnkleBite, false);
+				anim.SetBool(CrochBite, false);
+				anim.SetBool(Dies, false);
+				anim.SetBool(HushLittleBaby, false);
+				anim.SetBool(Run, false);
+			}
+		}
+		else if (Input.GetKeyDown(KeyCode.U))
+		{
+			if (anim.GetCurrentAnimatorStateInfo(0).IsName("IdleOne"))
+			{
+				anim.SetBool(IdleAlert, false);
+				anim.SetBool(IdleOne, false);
+				anim.SetBool(Sleeps, false);
+				anim.SetBool(AngryReaction, false);
+				anim.SetBool(Hit, true);
+				anim.SetBool(AnkleBite, false);
+				anim.SetBool(CrochBite, false);
+				anim.SetBool(Dies, false);
+				anim.SetBool(HushLittleBaby, false);
+				anim.SetBool(Run, false);
+			}
+		}
+		else if (Input.GetKeyUp(KeyCode.U))
+		{
+			if (anim.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+			{                //u to hit
+				anim.SetBool(IdleAlert, false);
+				anim.SetBool(IdleOne, true);
+				anim.SetBool(Sleeps, false);
+				anim.SetBool(AngryReaction, false);
+				anim.SetBool(Hit, false);
+				anim.SetBool(AnkleBite, false);
+				anim.SetBool(CrochBite, false);
+				anim.SetBool(Dies, false);
+				anim.SetBool(HushLittleBaby, false);
+				anim.SetBool(Run, false);
+			}
+		}
+		else if (Input.GetKeyDown(KeyCode.Q))
+		{
+			if (anim.GetCurrentAnimatorStateInfo(0).IsName("IdleOne"))
+			{
+				anim.SetBool(IdleAlert, false);
+				anim.SetBool(IdleOne, false);
+				anim.SetBool(Sleeps, false);
+				anim.SetBool(AngryReaction, false);
+				anim.SetBool(Hit, false);
+				anim.SetBool(AnkleBite, true);
+				anim.SetBool(CrochBite, false);
+				anim.SetBool(Dies, false);
+				anim.SetBool(HushLittleBaby, false);
+				anim.SetBool(Run, false);
+			}
+		}
+		else if (Input.GetKeyUp(KeyCode.Q))
+		{
+			if (anim.GetCurrentAnimatorStateInfo(0).IsName("AnkleBite"))
+			{              //Q to ankle bite
+				anim.SetBool(IdleAlert, false);
+				anim.SetBool(IdleOne, true);
+				anim.SetBool(Sleeps, false);
+				anim.SetBool(AngryReaction, false);
+				anim.SetBool(Hit, false);
+				anim.SetBool(AnkleBite, false);
+				anim.SetBool(CrochBite, false);
+				anim.SetBool(Dies, false);
+				anim.SetBool(HushLittleBaby, false);
+				anim.SetBool(Run, false);
+			}
+		}
+		else if (Input.GetKeyDown(KeyCode.W))
+		{
+			if (anim.GetCurrentAnimatorStateInfo(0).IsName("IdleOne"))
+			{
+				anim.SetBool(IdleAlert, false);
+				anim.SetBool(IdleOne, false);
+				anim.SetBool(Sleeps, false);
+				anim.SetBool(AngryReaction, false);
+				anim.SetBool(Hit, false);
+				anim.SetBool(AnkleBite, false);
+				anim.SetBool(CrochBite, true);
+				anim.SetBool(Dies, false);
+				anim.SetBool(HushLittleBaby, false);
+				anim.SetBool(Run, false);
+			}
+		}
+		else if (Input.GetKeyUp(KeyCode.W))
+		{
+			if (anim.GetCurrentAnimatorStateInfo(0).IsName("CrochBite"))
+			{          //W to croch bite
+				anim.SetBool(IdleAlert, false);
+				anim.SetBool(IdleOne, true);
+				anim.SetBool(Sleeps, false);
+				anim.SetBool(AngryReaction, false);
+				anim.SetBool(Hit, false);
+				anim.SetBool(AnkleBite, false);
+				anim.SetBool(CrochBite, false);
+				anim.SetBool(Dies, false);
+				anim.SetBool(HushLittleBaby, false);
+				anim.SetBool(Run, false);
+			}
+		}
+		else if (Input.GetKeyDown(KeyCode.O))
+		{
+			if (anim.GetCurrentAnimatorStateInfo(0).IsName("IdleOne"))
+			{
+				anim.SetBool(IdleAlert, false);
+				anim.SetBool(IdleOne, false);
+				anim.SetBool(Sleeps, false);
+				anim.SetBool(AngryReaction, false);
+				anim.SetBool(Hit, false);
+				anim.SetBool(AnkleBite, false);
+				anim.SetBool(CrochBite, false);
+				anim.SetBool(Dies, true);
+				anim.SetBool(HushLittleBaby, false);
+				anim.SetBool(Run, false);
+			}
+		}
+		else if (Input.GetKeyUp(KeyCode.O))
+		{
+			if (anim.GetCurrentAnimatorStateInfo(0).IsName("Dies"))
+			{                        //O to simple die
+				anim.SetBool(IdleAlert, false);
+				anim.SetBool(IdleOne, true);
+				anim.SetBool(Sleeps, false);
+				anim.SetBool(AngryReaction, false);
+				anim.SetBool(Hit, false);
+				anim.SetBool(AnkleBite, false);
+				anim.SetBool(CrochBite, false);
+				anim.SetBool(Dies, false);
+				anim.SetBool(HushLittleBaby, false);
+				anim.SetBool(Run, false);
+			}
+		}
+		else if (Input.GetKeyDown(KeyCode.I))
+		{
+			if (anim.GetCurrentAnimatorStateInfo(0).IsName("IdleOne"))
+			{
+				anim.SetBool(IdleAlert, false);
+				anim.SetBool(IdleOne, false);
+				anim.SetBool(Sleeps, false);
+				anim.SetBool(AngryReaction, false);
+				anim.SetBool(Hit, false);
+				anim.SetBool(AnkleBite, false);
+				anim.SetBool(CrochBite, false);
+				anim.SetBool(Dies, false);
+				anim.SetBool(HushLittleBaby, true);
+				anim.SetBool(Run, false);
+			}
+		}
+		else if (Input.GetKeyUp(KeyCode.I))
+		{
+			if (anim.GetCurrentAnimatorStateInfo(0).IsName("HushLittleBaby"))
+			{                        //I to hush
+				anim.SetBool(IdleAlert, false);
+				anim.SetBool(IdleOne, true);
+				anim.SetBool(Sleeps, false);
+				anim.SetBool(AngryReaction, false);
+				anim.SetBool(Hit, false);
+				anim.SetBool(AnkleBite, false);
+				anim.SetBool(CrochBite, false);
+				anim.SetBool(Dies, false);
+				anim.SetBool(HushLittleBaby, false);
+				anim.SetBool(Run, false);
+			}
+		}
+		else if (Input.GetKeyDown(KeyCode.R))
+		{
+			if (anim.GetCurrentAnimatorStateInfo(0).IsName("IdleOne"))
+			{
+				anim.SetBool(IdleAlert, false);
+				anim.SetBool(IdleOne, false);
+				anim.SetBool(Sleeps, false);
+				anim.SetBool(AngryReaction, false);
+				anim.SetBool(Hit, false);
+				anim.SetBool(AnkleBite, false);
+				anim.SetBool(CrochBite, false);
+				anim.SetBool(Dies, false);
+				anim.SetBool(HushLittleBaby, false);
+				anim.SetBool(Run, true);
+			}
+		}
+		else if (Input.GetKeyUp(KeyCode.R))
+		{
+			run();
+
+		}*/
+	}
+
+	public void run(){
+		
+		if (anim.GetCurrentAnimatorStateInfo(0).IsName("Run"))
+		{                        //R to Run
+				anim.SetBool(IdleAlert, false);
+				anim.SetBool(IdleOne, true);
+				anim.SetBool(Sleeps, false);
+				anim.SetBool(AngryReaction, false);
+				anim.SetBool(Hit, false);
+				anim.SetBool(AnkleBite, false);
+				anim.SetBool(CrochBite, false);
+				anim.SetBool(Dies, false);
+				anim.SetBool(HushLittleBaby, false);
+				anim.SetBool(Run, false);
+		}
+
+		
 	}
 }
