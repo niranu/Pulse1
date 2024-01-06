@@ -22,6 +22,8 @@ public class ClosePlayerEntered : MonoBehaviour{
 
     public bool enteredHouse = false;
     private MoveObjectController moveObjectController;
+    public CloseMainDoor closeMainDoor;
+    GameObject doorObject;
 
     public bool openTheDoor = true;
     
@@ -29,7 +31,7 @@ public class ClosePlayerEntered : MonoBehaviour{
     //MoveObjectController moveObjectController;
 
 
-    void OnTriggerExit(Collider other)
+    /*void OnTriggerExit(Collider other)
     {
         if (other.gameObject == player)     //player has exited trigger
         {
@@ -39,7 +41,7 @@ public class ClosePlayerEntered : MonoBehaviour{
 
             enteredHouse = true;
         }
-    }
+    }*/
 
 
 
@@ -48,6 +50,17 @@ public class ClosePlayerEntered : MonoBehaviour{
     void Start(){
         //Initialize moveDrawController if script is enabled.
         player = GameObject.FindGameObjectWithTag("Player");
+        doorObject = GameObject.FindGameObjectWithTag("Close");
+        if (doorObject == null)
+        {
+            Debug.Log("Door Object is null");
+        }
+        closeMainDoor = GetComponentInChildren<CloseMainDoor>();
+        if (closeMainDoor == null)
+        {
+            Debug.Log("Close Main door is null");
+        }
+
 
         fpsCam = Camera.main;
         if (fpsCam == null) //a reference to Camera is required for rayasts
@@ -71,15 +84,14 @@ public class ClosePlayerEntered : MonoBehaviour{
         moveObjectController = GetComponent<MoveObjectController>();
         
 
-
-
-
-
-
-    }
+     }
 
     // Update is called once per frame
     void Update(){
+
+        
+
+         
 
         MoveableObject moveable = GetComponent<MoveableObject>();
         int myNumber = moveable.objectNumber;
@@ -87,7 +99,20 @@ public class ClosePlayerEntered : MonoBehaviour{
         
         string animBoolNameNum = animBoolName + myNumber.ToString();
 
-        if (enteredHouse){
+        /*if (enteredHouse){
+            anim.enabled = true;
+            anim.SetBool(animBoolNameNum, false);
+            openTheDoor = false;
+            moveObjectController.enabled = false;
+        }*/
+
+        bool playerInTheHouse = closeMainDoor.playerEnteredHouse;
+
+        Debug.Log("If oncesi");
+        if (playerInTheHouse){
+            Debug.Log("Player In the house");
+            showInteractMsg = false;
+            Debug.Log("Control");
             anim.enabled = true;
             anim.SetBool(animBoolNameNum, false);
             openTheDoor = false;
@@ -98,16 +123,8 @@ public class ClosePlayerEntered : MonoBehaviour{
 
         
 
-        
-        
-
-
     }
         
-    
-
- 
-
 }
 
 
