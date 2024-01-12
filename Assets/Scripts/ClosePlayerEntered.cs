@@ -108,7 +108,7 @@ public class ClosePlayerEntered : MonoBehaviour{
 
         bool playerInTheHouse = closeMainDoor.playerEnteredHouse;
 
-        Debug.Log("If oncesi");
+        
         if (playerInTheHouse){
             Debug.Log("Player In the house");
             showInteractMsg = false;
