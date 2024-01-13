@@ -8,12 +8,12 @@ using static UnityEditor.Progress;
 public class PickAnItem : MonoBehaviour{
     private GameObject flashLightOnPlayer; // add the real flashlight as the child of the player
     PickableItem p;
-    public GameObject[] inventory = new GameObject[7];
+    public GameObject[] inventory = new GameObject[15];
 
 
     MoveObjectController moveObjectController;
     ClosePlayerEntered closePlayerEntered;
-    public int totalKey = 2;
+    public int totalKey = 7;
     public int keyCount = 0;
 
     // Start is called before the first frame update
@@ -42,7 +42,7 @@ public class PickAnItem : MonoBehaviour{
 
         if (other.gameObject.tag == "Pickable Item"){
             p = other.GetComponent<PickableItem>();
-            if (Input.GetKey(KeyCode.E)) {
+            if (Input.GetKey(KeyCode.F)) {
                 Debug.Log("PickableItem is picked");
                 addInventory(other.gameObject);
                 other.gameObject.SetActive(false);
@@ -52,7 +52,7 @@ public class PickAnItem : MonoBehaviour{
             }
         }
         else if (other.gameObject.tag == "Flashlight"){
-            if (Input.GetKey(KeyCode.E)){
+            if (Input.GetKey(KeyCode.F)){
                  other.gameObject.SetActive(false);
                  gameObject.transform.GetChild(1).gameObject.SetActive(true);
                  //addInventory(other.gameObject);
@@ -63,9 +63,9 @@ public class PickAnItem : MonoBehaviour{
             } 
          }
         else if (other.gameObject.tag == "Key"){
-            if (Input.GetKey(KeyCode.E)) {
+            if (Input.GetKey(KeyCode.F)) {
                 p = other.GetComponent<PickableItem>();
-                if (Input.GetKey(KeyCode.E)){
+                if (Input.GetKey(KeyCode.F)){
                     Debug.Log("Key is picked");
                     addInventory(other.gameObject);
                     other.gameObject.SetActive(false);

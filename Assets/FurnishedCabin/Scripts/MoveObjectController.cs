@@ -1,7 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class MoveObjectController : MonoBehaviour {
+
+	public int enterNumber = 0;
+
 	public float reachRange = 3.5f;			
 
 	private Animator anim;
@@ -57,6 +61,15 @@ public class MoveObjectController : MonoBehaviour {
 			playerEntered = true;
 
 		}
+		if (enterNumber < 8)
+		{
+            enterNumber++;
+        }
+		if (enterNumber == 8)
+		{
+			enterNumber = 1;
+		}
+		
 	}
 
 
@@ -108,6 +121,7 @@ public class MoveObjectController : MonoBehaviour {
                         anim.enabled = true;
                         anim.SetBool(animBoolNameNum, !isOpen);
                         msg = getGuiMsg(!isOpen);
+						
                     }
 
                 }
