@@ -9,7 +9,7 @@ using UnityEngine.Experimental.GlobalIllumination;
 public class FlashlightToggle : MonoBehaviour
 {
     public GameObject lightGO; // Light gameObject to work with
-    public float TotalUsageTime { get; private set; } = 0f;
+    public float TotalUsageTime { get; protected set; } = 0f;
 
     private float usageStartTime;
     private bool outOfBattery = false;
@@ -49,6 +49,12 @@ public class FlashlightToggle : MonoBehaviour
                 }
             }
         }
+        
+        else
+        {
+            // Flashlight is out of battery, handle the logic here if needed
+            // You can implement a cooldown period or any other behavior
+        }
     }
 
     void ToggleFlashlight()
@@ -62,5 +68,24 @@ public class FlashlightToggle : MonoBehaviour
             usageStartTime = Time.time;
             Debug.Log("Flashlight is now in use");
         }
+        else
+        {
+            // If turning off, reset TotalUsageTime if it's a battery-powered flashlight
+            if (!lightGO.activeSelf && gameObject.CompareTag("Flashlight"))
+            {
+                BatteryIsAdded();
+            }
+        }
+        
     }
+
+    public void BatteryIsAdded()
+    {
+        Debug.Log("BatteryIsAdded method is called");
+        // Reset TotalUsageTime to zero
+        TotalUsageTime = 0f;
+        outOfBattery = false;
+        Debug.Log("Battery added. TotalUsageTime reset to zero.");
+    }
+    
 }
