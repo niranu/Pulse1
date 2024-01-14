@@ -67,17 +67,9 @@ public class FlashlightToggle : MonoBehaviour
         {
             usageStartTime = Time.time;
             Debug.Log("Flashlight is now in use");
-        }
-        else
-        {
-            // If turning off, reset TotalUsageTime if it's a battery-powered flashlight
-            if (!lightGO.activeSelf && gameObject.CompareTag("Flashlight"))
-            {
-                BatteryIsAdded();
-            }
-        }
-        
+        } 
     }
+    
 
     public void BatteryIsAdded()
     {

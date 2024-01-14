@@ -110,7 +110,7 @@ public class PickAnItem : MonoBehaviour
 
             
         }
-        else if (other.gameObject.tag == "Battery")
+         /*else if (other.gameObject.tag == "Battery")
         {
             if (Input.GetKey(KeyCode.F))
             {
@@ -133,7 +133,7 @@ public class PickAnItem : MonoBehaviour
                 
             }
 
-        }
+        }*/
     }
 
     public void addInventory(GameObject item)
