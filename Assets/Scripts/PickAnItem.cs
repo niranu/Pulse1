@@ -14,15 +14,19 @@ public class PickAnItem : MonoBehaviour
 
     MoveObjectController moveObjectController;
     ClosePlayerEntered closePlayerEntered;
-    public int totalKey = 7;
+    public int totalKey = 2;
     public int keyCount = 0;
+
+    public GameObject anibus;
 
     // Start is called before the first frame update
     void Start()
     {
         flashLightOnPlayer = GameObject.Find("Flashlight");
+        anibus = GameObject.Find("anubis_head");
+        anibus.SetActive(false);
 
-        
+
         moveObjectController = GameObject.Find("PFB_DoorDouble").GetComponent<MoveObjectController>();
 
         if (moveObjectController == null)
@@ -35,7 +39,7 @@ public class PickAnItem : MonoBehaviour
         {
             Debug.LogError("ClosePlayerEntered not found on the PFB_DoorDouble GameObject.");
         }
-        
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -71,28 +75,15 @@ public class PickAnItem : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.F))
             {
-                p = other.GetComponent<PickableItem>();
+                //p = other.GetComponent<PickableItem>();
                 if (Input.GetKey(KeyCode.F))
                 {
                     Debug.Log("Key is picked");
                     addInventory(other.gameObject);
                     other.gameObject.SetActive(false);
                     keyCount++;
+                    Debug.Log(keyCount);
 
-
-                    /*foreach (GameObject item in inventory)
-                    {
-                        if (item.CompareTag("Key"))
-                        {
-                            keyCount++;
-                        }
-                        if (keyCount == totalKey)
-                        {
-                            moveObjectController.enabled = true;
-                        }
-
-                    }
-                    keyCount = 0;*/
 
                     if (keyCount == totalKey)
                     {
@@ -100,6 +91,11 @@ public class PickAnItem : MonoBehaviour
                         Debug.Log("Main door enabled.");
                         closePlayerEntered.enabled = false;
                         Debug.Log("ClosePlayerEntered disabled");
+
+                        //set trinket active
+                        anibus.SetActive(true);
+
+
                     }
 
                     // add inventory method
@@ -108,7 +104,7 @@ public class PickAnItem : MonoBehaviour
             }
             //check if the key count = key num, if so activate the main door
 
-            
+
         }
         else if (other.gameObject.tag == "Battery")
         {
@@ -119,7 +115,7 @@ public class PickAnItem : MonoBehaviour
                 //addInventory(other.gameObject);
                 Debug.Log("Battery is picked");
                 Debug.Log("You can use flashlight 30 more secs");
-                
+
                 //*
                 // Check if the FlashlightToggle component is found
                 FlashlightToggle flashlightToggle = flashLightOnPlayer.GetComponent<FlashlightToggle>();
@@ -130,51 +126,51 @@ public class PickAnItem : MonoBehaviour
                 }
                 //NO NEED TO ADD TO INVENTORY SINCE WE ARE USING IT ??
                 //
-                
+
             }
 
         }
     }
 
     public void addInventory(GameObject item)
-        {
+    {
 
-            if (item != null)
+        if (item != null)
+        {
+            PickableItem pickableItem = item.GetComponent<PickableItem>();
+            if (pickableItem != null)
             {
-                PickableItem pickableItem = item.GetComponent<PickableItem>();
-                if (pickableItem != null)
+                for (int i = 0; i < inventory.Length; i++)
                 {
-                    for (int i = 0; i < inventory.Length; i++)
+                    if (inventory[i] == null)
                     {
-                        if (inventory[i] == null)
-                        {
-                            inventory[i] = item;
-                            Debug.Log("Item added to inventory at slot " + i);
-                            return;
-                        }
+                        inventory[i] = item;
+                        Debug.Log("Item added to inventory at slot " + i);
+                        return;
                     }
                 }
-
-
             }
 
-            for (int i = 0; i < inventory.Length; i++)
-            {
-                Debug.Log(inventory[i]);
-            }
 
         }
 
-        public GameObject[] GetInventory()
+        for (int i = 0; i < inventory.Length; i++)
         {
-            if (inventory == null)
-            {
-                Debug.LogError("Inventory is null in PickAnItem script.");
-                inventory = new GameObject[7]; // Initialize the array if it's null
-            }
-
-            return inventory;
+            Debug.Log(inventory[i]);
         }
+
     }
 
- 
+    public GameObject[] GetInventory()
+    {
+        if (inventory == null)
+        {
+            Debug.LogError("Inventory is null in PickAnItem script.");
+            inventory = new GameObject[7]; // Initialize the array if it's null
+        }
+
+        return inventory;
+    }
+}
+
+

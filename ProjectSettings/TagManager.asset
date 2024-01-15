@@ -8,6 +8,7 @@ TagManager:
   - Pickable Item
   - Key
   - Close
+  - Anibus
   layers:
   - Default
   - TransparentFX
