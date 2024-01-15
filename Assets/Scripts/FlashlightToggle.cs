@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 
-
-
-
 public class FlashlightToggle : MonoBehaviour
 {
     public GameObject lightGO; // Light gameObject to work with
