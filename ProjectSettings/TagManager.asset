@@ -8,6 +8,8 @@ TagManager:
   - Pickable Item
   - Key
   - Close
+  - Battery
+  - Note
   layers:
   - Default
   - TransparentFX
