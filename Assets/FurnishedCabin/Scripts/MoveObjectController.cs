@@ -25,6 +25,8 @@ public class MoveObjectController : MonoBehaviour {
 
 	bool canOpenTheDoor = true;
 
+	public bool isOpen = false;
+
 
 
 
@@ -114,7 +116,7 @@ public class MoveObjectController : MonoBehaviour {
                     showInteractMsg = true;
                     string animBoolNameNum = animBoolName + moveableObject.objectNumber.ToString();
 
-                    bool isOpen = anim.GetBool(animBoolNameNum);    //need current state for message.
+                    isOpen = anim.GetBool(animBoolNameNum);    //need current state for message.
                     msg = getGuiMsg(isOpen);
 
                     if (Input.GetKeyUp(KeyCode.E) || Input.GetButtonDown("Fire1")){
