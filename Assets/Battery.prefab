@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6722956963762184854}
   - component: {fileID: 6735929700499575477}
   - component: {fileID: 9141813105878527946}
-  - component: {fileID: 1276076590477812252}
+  - component: {fileID: 2083715387}
   m_Layer: 0
   m_Name: Battery
   m_TagString: Battery
@@ -95,11 +95,11 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1.87
-  m_Height: 4.75
+  m_Radius: 3.18
+  m_Height: 8.87
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &1276076590477812252
+--- !u!114 &2083715387
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,6 +108,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 716135758169054446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dc3f9a525885504c83611de76252b62, type: 3}
+  m_Script: {fileID: 11500000, guid: 51e42486b1d5ae54ab277e9a670a1b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
