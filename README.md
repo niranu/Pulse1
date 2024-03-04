@@ -9,8 +9,8 @@ Features
 
 How to Play
 - Use the arrow keys or WASD keys to move your character.
-- Interact with objects by clicking on them.
-- Solve puzzles to unlock new areas and progress through the game.
+- Interact with objects by picking them.
+- Solve puzzles to progress through the game.
 - Be wary of jump scares and unexpected events!
  
 Installation
