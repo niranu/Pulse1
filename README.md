@@ -12,7 +12,7 @@ How to Play
 - Interact with objects by clicking on them.
 - Solve puzzles to unlock new areas and progress through the game.
 - Be wary of jump scares and unexpected events!
-- 
+ 
 Installation
 - Clone the repository to your local machine.
 - Open the project in Unity.
