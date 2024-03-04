@@ -8,7 +8,7 @@ Features
 - Unity: Built using the Unity game engine, ensuring a smooth and immersive gameplay experience.
 
 How to Play
-- Use the arrow keys or WASD keys to move your character.
+- Use WASD keys to move your character.
 - Interact with objects by picking them.
 - Solve puzzles to progress through the game.
 - Be wary of jump scares and unexpected events!
